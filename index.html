@@ -2,112 +2,150 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <style>
+      body { padding: 256px }
+      button { display: none; width: 50%; padding: 16px 0; margin: 16px auto }
+    </style>
   </head>
-  <body>
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  <h1> สวัสดีโลก </h1>
-  
-  <script>
-  async function main() {await liff.init({ liffId: "1656905299-gYaGGNEq" })
-  await liff.ShareTargetPicker([
-    { 
-      "type": "flex",
-      "alttext": "Flex Message",
-      "content": {
 
-    "type": "bubble",
-    "hero": {
-    "type": "image",
-    "url": "https://data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXGB8cGBgYGhgfIBwbIB8XFhwcHBgeHikhHx4mHxgaIjIjJiosLzAvHiA0OTQuOCkuLywBCgoKDg0OHBAQHC8mIScuLi4sMDkuMzYuLi4uLi4uLjAsMS4uOC4uLjAuLi4uMC4uLi4uLi4uLi4uLi4uLi4uLv/AABEIAOAA4AMBIgACEQEDEQH/xAAcAAACAwEBAQEAAAAAAAAAAAAFBgMEBwIBAAj/xABMEAACAQIEAwUFBgMDCQYHAQABAgMAEQQSITEFBkETIlFhcQcygZGhFEKxwdHwI1JyYoLhFRYkM0OywtLxU1SSorPiRGNzg4ST4xf/xAAaAQACAwEBAAAAAAAAAAAAAAADBAECBQAG/8QAMREAAgIBAwIDBgUFAQAAAAAAAQIAAxEEEiExQRMiUQVhcYGRoRRCweHwIzKx0fFS/9oADAMBAAIRAxEAPwDIOGzsk0bqNQwYAfJhRvjfLcxnZ4kJWT+IANbXvcaeBDfI+FB+FayoRYahh5dG/X4VqqY1iAonhGi7I3RzJbroHZm+PwAycHMIvSZ/hOA4gG3ZPfwym/ytRfB8Pl0/hvsD7rbHQHbYnY02ycRkU6Sxn3iCqsLXIJHj3mJb/AkV42LcmxljsV3ytuRlPobW8u6LWoTBWjdWqevoIDOGdWylCGvYC258rb1KmFc65GtvsdjsaKzHtSheePuaiyvvZQL302RdvXW5rx2NgolUjYEAjbLf0uVHwA2pZ6D+WNr7Ts7gQdFhielEMPwtzspotw/GRxr3iHbxtb8f3+FTvxk9ABWdazqxXEeTVPYoKiU4uCt4VaThHiRXH+UmPWvVxZ8aAS8gm4ydeGgdalXAioUxPnViPEUM7oJjZ6zpcHUgwtSRverkSeNULGLNYwlWLCVYWACriRX8hXdgNqoSYA2ky",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": "https://linecorp.com"
-    }
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": "https://linecorp.com"
-    },
-    "contents": [
-      {
-        "type": "text",
-        "text": "แจกให้ฟรี เครดิต 50 บาท",
-        "weight": "bold",
-        "size": "xl",
-        "align": "center",
-        "contents": []
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "text",
-                "text": "กดคลิกเพื่อรับ",
-                "weight": "bold",
-                "size": "xl",
-                "align": "center",
-                "margin": "sm",
-                "contents": []
-              }
-            ]
+  <body>
+  <button id="btnShare" onclick="sendShare()">Share Target Picker</button>
+  <button id="btnLogin" onclick="liff.login()">Log In</button>
+  <button id="btnLogOut" onclick="logOut()">Log Out</button>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+   async function sendShare() {
+      const result = await liff.shareTargetPicker([
+        {
+          "type": "flex",
+          "altText": "Flex Message",
+          "contents": {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "md",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "BROWN'S ADVENTURE",
+                  "size": "xl",
+                  "gravity": "center",
+                  "weight": "bold",
+                  "wrap": true
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "sm",
+                  "margin": "lg",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Date",
+                          "flex": 1,
+                          "size": "sm",
+                          "color": "#AAAAAA"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Monday 25, 9:00PM",
+                          "flex": 4,
+                          "size": "sm",
+                          "color": "#666666",
+                          "wrap": true
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Place",
+                          "flex": 1,
+                          "size": "sm",
+                          "color": "#AAAAAA"
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE Thailand",
+                          "flex": 4,
+                          "size": "sm",
+                          "color": "#666666",
+                          "wrap": true
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "margin": "xxl",
+                      "contents": [
+                        {
+                          "type": "spacer"
+                        },
+                        {
+                          "type": "image",
+                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/linecorp_code_withborder.png",
+                          "size": "xl",
+                          "aspectMode": "cover"
+                        },
+                        {
+                          "type": "text",
+                          "text": "You can enter the theater by using this code instead of a ticket",
+                          "margin": "xxl",
+                          "size": "xs",
+                          "color": "#AAAAAA",
+                          "wrap": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
           }
-        ]
-      },
-      {
-        "type": "text",
-        "text": "สมัครรับได้เลย วันนี้ เท่านั้น",
-        "size": "xxs",
-        "color": "#AAAAAA",
-        "wrap": true,
-        "contents": []
+        }
+      ])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
       }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "spacer",
-        "size": "xxl"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "ุแชร์",
-          "uri": "https://liff.line.me/1656905299-gYaGGNEq"
-        },
-        "color": "#905C44",
-        "style": "primary"
+    }
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+    async function main() {
+      await liff.init({ liffId: "YOUR-LIFF-ID" })
+      if (liff.isLoggedIn()) {
+        document.getElementById("btnShare").style.display = "block"
+        if (!liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "block"
+        }
+      } else {
+        document.getElementById("btnLogin").style.display = "block"
       }
-    ]
-  }
-}
-    
-  }
-  ]
-  })
-  liff.closewindow()
-}
-main()
-</script>
+    }
+    main()
+  </script>
 </body>
-</html>
-  </body>
 </html>
